@@ -26,6 +26,10 @@ void get_field_size();
 void display_field();
 void display_block(Block *block,int x,int y);
 
+// playgame.c
+void get_command();
+bool in_field(int x,int y);
+
 // getChar.c
 char getChar();
 
