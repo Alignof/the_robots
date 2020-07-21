@@ -38,5 +38,8 @@ void create_field(){
 
 	x=rand()%(field->size_x);
 	y=rand()%(field->size_y);
+
+	field->player_x=x;
+	field->player_y=y;
 	field->matrix[x][y].state=PLAYER;
 }

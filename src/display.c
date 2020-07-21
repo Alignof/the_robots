@@ -1,5 +1,9 @@
 #include "the_robots.h"
 
+void display_prompt(){
+	printf(">>");
+}
+
 void display_block(Block *block,int x,int y){
 	// !debug: all block opend
 	
@@ -23,9 +27,9 @@ void display_field(){
 	int x,y;
 	char c;
 
-	printf("\033c");
-	//printf("\033[1;1H");
-	//printf("\033[2J");
+	//printf("\033c");
+	printf("\033[1;1H");
+	printf("\033[2J");
 
 
 	printf("\e[40m  ");
