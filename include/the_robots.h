@@ -29,6 +29,7 @@ Field *field;
 // setup.c
 void create_field();
 void get_field_size();
+void set_robot();
 
 // display.c
 void display_field();
