@@ -5,7 +5,7 @@ int main(int argc,char *argv[]){
 
 	create_field();
 	display_field();
-	play_game();
+	playgame();
 
 	return 0;
 }
