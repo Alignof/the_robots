@@ -12,6 +12,8 @@ typedef struct{
 typedef struct{
 	int size_x;
 	int size_y;
+	int player_x;
+	int player_y;
 	int robot_num;
 	Block **matrix;
 }Field;
@@ -25,6 +27,9 @@ void get_field_size();
 // display.c
 void display_field();
 void display_block(Block *block,int x,int y);
+
+// play_game.c
+void play_game();
 
 // getChar.c
 char getChar();
