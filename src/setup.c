@@ -29,18 +29,30 @@ void get_field_size(){
 	field->size_x=(field->size_y)*4;
 }
 
+int skip_block(int x,int y){
+	int out_x,out_y;
+	int skip=0;
+
+	out_x=field->size_x - x;
+	out_y=field->size_y - y;
+	out_x=out_x<=2 ? out_x : 0;
+	out_y=out_y<=2 ? out_y : 0;
+
+
+	skip=25-((5-out_x)*(5-out_y));
+	return skip;
+}
+
 void set_robot(){
 	int x,y;
 	int counter=0;
 
 	srand((unsigned)time(NULL));
 
-/*
 	while(counter < field->robot_num){
-		set=rand()%((field->size_x * field->player_y)-16);
+		set=rand()%((field->size_x * field->player_y)-skip_block(field->size_x,field->player_y));
 
 	}
-*/
 }
 
 void create_field(){

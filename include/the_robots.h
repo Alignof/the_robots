@@ -30,6 +30,7 @@ Field *field;
 void create_field();
 void get_field_size();
 void set_robot();
+int skip_block(int x,int y);
 
 // display.c
 void display_field();

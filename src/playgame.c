@@ -1,7 +1,7 @@
 #include "the_robots.h"
 
 bool in_field(int x,int y){
-	return (0 <= y && y <= field->size_y-1) && (0 <= x && x <= field->size_x-1);
+	return (0 <= y && y < field->size_y) && (0 <= x && x < field->size_x);
 }
 
 void move_player(int next_x,int next_y){
