@@ -7,7 +7,7 @@ void display_prompt(){
 void display_block(Block *block,int x,int y){
 	// !debug: all block opend
 	
-	printf("\e[43m");
+	printf("\e[42m");
 	switch(block->state){
 		case NONE:
 			printf(" ");
