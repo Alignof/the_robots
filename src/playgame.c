@@ -13,6 +13,25 @@ void move_player(int next_x,int next_y){
 	}
 }
 
+void set_random(){
+	int rx,ry;
+	int *x=&(field->player_x);
+	int *y=&(field->player_y);
+
+	for(int i=0;i<field->robot_num;i++){
+		rx=field->robots[i].x;
+		ry=field->robots[i].y;
+		field->matrix[rx][ry].state=NONE;
+	}
+
+	field->matrix[*x][*y].state=NONE;
+	*x=rand()%(field->size_x);
+	*y=rand()%(field->size_y);
+	field->matrix[*x][*y].state=PLAYER;
+
+	set_robots();
+}
+
 void get_command(){
 	char command;
 
@@ -54,6 +73,10 @@ void get_command(){
 			// upper left
 			case 7:
 				move_player(field->player_x-1,field->player_y-1);
+				break;
+			// set random
+			case 0:
+				set_random();
 				break;
 			// does not move
 			case 5:

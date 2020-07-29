@@ -27,6 +27,7 @@ void get_field_size(){
 		}
 	}while(field->size_y==0);
 	field->size_x=(field->size_y)*4;
+	field->robots=calloc(field->robot_num,sizeof(Robot));
 }
 
 int skip_block(int x,int y){
@@ -48,8 +49,6 @@ void set_robots(){
 	int x,y;
 	int counter=0;
 
-	srand((unsigned)time(NULL));
-
 	while(counter < field->robot_num){
 		set=rand()%((field->size_x * field->size_y)-skip_block(field->player_x,field->player_y));
 		x=set%field->size_x;
@@ -63,6 +62,8 @@ void set_robots(){
 
 		if(field->matrix[x][y].state==NONE){
 			field->matrix[x][y].state=ROBOT;
+			field->robots[counter].x=x;
+			field->robots[counter].y=y;
 			counter++;
 		}
 	}
