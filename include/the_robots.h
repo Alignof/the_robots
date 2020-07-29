@@ -40,6 +40,7 @@ void display_block(Block *block,int x,int y);
 // playgame.c
 void playgame();
 void get_command();
+void random_set();
 bool in_field(int x,int y);
 
 // getChar.c

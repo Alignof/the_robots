@@ -13,7 +13,7 @@ void move_player(int next_x,int next_y){
 	}
 }
 
-void set_random(){
+void random_set(){
 	int rx,ry;
 	int *x=&(field->player_x);
 	int *y=&(field->player_y);
@@ -76,7 +76,7 @@ void get_command(){
 				break;
 			// set random
 			case 0:
-				set_random();
+				random_set();
 				break;
 			// does not move
 			case 5:
