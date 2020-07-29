@@ -43,15 +43,28 @@ int skip_block(int x,int y){
 	return skip;
 }
 
-void set_robot(){
+void set_robots(){
+	int set;
 	int x,y;
 	int counter=0;
 
 	srand((unsigned)time(NULL));
 
 	while(counter < field->robot_num){
-		set=rand()%((field->size_x * field->player_y)-skip_block(field->size_x,field->player_y));
+		set=rand()%((field->size_x * field->size_y)-skip_block(field->player_x,field->player_y));
+		x=set%field->size_x;
+		y=set/field->size_x;
 
+		if(abs(field->player_x-x)<=2 && abs(field->player_y-y)<=2){
+			set+=(field->player_y-y+2)*3;
+			x=set/field->size_x;
+			y=set%field->size_x;
+		}
+
+		if(field->matrix[x][y].state==NONE){
+			field->matrix[x][y].state=ROBOT;
+			counter++;
+		}
 	}
 }
 
@@ -71,4 +84,5 @@ void create_field(){
 	field->player_x=x;
 	field->player_y=y;
 	field->matrix[x][y].state=PLAYER;
+	set_robots();
 }

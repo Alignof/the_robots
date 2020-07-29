@@ -29,7 +29,7 @@ Field *field;
 // setup.c
 void create_field();
 void get_field_size();
-void set_robot();
+void set_robots();
 int skip_block(int x,int y);
 
 // display.c
