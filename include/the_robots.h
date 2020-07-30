@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include<string.h>
+#include<time.h>
 #include<termio.h>
 #include<curses.h>
 
