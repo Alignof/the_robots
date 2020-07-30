@@ -13,7 +13,7 @@ void move_player(int next_x,int next_y){
 	}
 }
 
-void set_random(){
+void random_set(){
 	int rx,ry;
 	int *x=&(field->player_x);
 	int *y=&(field->player_y);
@@ -35,60 +35,22 @@ void set_random(){
 void get_command(){
 	char command;
 
-	do{
+	while(1){
 		display_field();
 		display_prompt();
-		command=getChar();
 
-		printf("%d\n",command);
-		switch(command){
-			// upper
-			case 8:
-				move_player(field->player_x,field->player_y-1);
-				break;
-			// upper right
-			case 9:
-				move_player(field->player_x+1,field->player_y-1);
-				break;
-			// right
-			case 6:
-				move_player(field->player_x+1,field->player_y);
-				break;
-			// lower right
-			case 3:
-				move_player(field->player_x+1,field->player_y+1);
-				break;
-			// lower
-			case 2:
-				move_player(field->player_x,field->player_y+1);
-				break;
-			// lower left
-			case 1:
-				move_player(field->player_x-1,field->player_y+1);
-				break;
-			// left
-			case 4:
-				move_player(field->player_x-1,field->player_y);
-				break;
-			// upper left
-			case 7:
-				move_player(field->player_x-1,field->player_y-1);
-				break;
-			// set random
-			case 0:
-				set_random();
-				break;
-			// does not move
-			case 5:
-				break;
-			default:
-				command=0;
-		}
-	}while(in_field(field->player_x,field->player_y) || command==0);
+		do{
+			command=getChar();
+		}while(!(0<=command && command<=9) || command==5);
+
+
+		if(command==0)
+			random_set();
+		else
+			move_player((field->player_x)+((command-1)%3-1),(field->player_y)-((command-1)/3-1));
+	}
 }
 
 void playgame(){
-	while(1){
-		get_command();
-	}
+	get_command();
 }
