@@ -1,7 +1,7 @@
 #include "the_robots.h"
 
 void display_prompt(){
-	printf(">>");
+	printf("[level:%d]>>",field->level);
 }
 
 void display_block(Block *block,int x,int y){
@@ -17,6 +17,9 @@ void display_block(Block *block,int x,int y){
 			break;
 		case ROBOT:
 			printf("+");
+			break;
+		case GARBAGE:
+			printf("\e[34m*\e[39m");
 			break;
 	}
 	printf("\e[49m");
@@ -51,4 +54,11 @@ void display_field(){
 	printf("  \e[49m\n");
 }
 
+void display_gameover(){
+	printf("game over...\n");
+}
+
+void display_gameclear(){
+	printf("game clear!\n");
+}
 

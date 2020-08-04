@@ -4,15 +4,15 @@
 #include<string.h>
 #include<time.h>
 #include<termio.h>
-#include<curses.h>
 
 typedef struct{
-	enum {NONE, PLAYER, ROBOT} state;
+	enum {NONE, PLAYER, ROBOT, GARBAGE} state;
 }Block;
 
 typedef struct{
 	int x;
 	int y;
+	bool active;
 }Robot;
 
 typedef struct{
@@ -21,6 +21,8 @@ typedef struct{
 	int player_x;
 	int player_y;
 	int robot_num;
+	int robots_remain;
+	int level;
 	Robot *robots;
 	Block **matrix;
 }Field;
@@ -37,12 +39,18 @@ int skip_block(int x,int y);
 void display_field();
 void display_prompt();
 void display_block(Block *block,int x,int y);
+void display_gameover();
+void display_gameclear();
 
 // playgame.c
 void playgame();
 void get_command();
-void random_set();
+void random_set(int *x,int *y);
 bool in_field(int x,int y);
+void robot_collision(int x,int y);
+void move_player(int next_x,int next_y);
+void move_robots(int player_x,int player_y);
+void next_stage();
 
 // getChar.c
 char getChar();
