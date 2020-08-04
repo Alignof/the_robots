@@ -58,10 +58,15 @@ void move_player(int next_x,int next_y){
 }
 
 
-void next_stage(int *x,int *y){
+void next_stage(){
 	int rx,ry;
 
+	field->level++;
+	if(field->level<10) field->robot_num++;
+	field->robots_remain=field->robot_num;
+
 	for(int i=0;i<field->robot_num;i++){
+		field->robots[i].active=true;
 		rx=field->robots[i].x;
 		ry=field->robots[i].y;
 		field->matrix[rx][ry].state=NONE;

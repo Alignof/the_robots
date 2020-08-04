@@ -22,6 +22,7 @@ typedef struct{
 	int player_y;
 	int robot_num;
 	int robots_remain;
+	int level;
 	Robot *robots;
 	Block **matrix;
 }Field;
@@ -49,7 +50,7 @@ bool in_field(int x,int y);
 void robot_collision(int x,int y);
 void move_player(int next_x,int next_y);
 void move_robots(int player_x,int player_y);
-void next_stage(int *x,int *y);
+void next_stage();
 
 // getChar.c
 char getChar();

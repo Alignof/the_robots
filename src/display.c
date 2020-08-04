@@ -1,7 +1,7 @@
 #include "the_robots.h"
 
 void display_prompt(){
-	printf(">>");
+	printf("[level:%d]>>",field->level);
 }
 
 void display_block(Block *block,int x,int y){

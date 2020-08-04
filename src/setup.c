@@ -28,8 +28,9 @@ void get_field_size(){
 	}while(field->size_y==0);
 
 	field->size_x=(field->size_y)*4;
-	field->robots=calloc(field->robot_num,sizeof(Robot));
+	field->robots=calloc(field->robot_num+10,sizeof(Robot));
 	field->robots_remain=field->robot_num;
+	field->level=1;
 	for(int i=0;i<field->robot_num;i++) field->robots[i].active=true;
 }
 
