@@ -26,8 +26,10 @@ void get_field_size(){
 				field->size_y=0;
 		}
 	}while(field->size_y==0);
+
 	field->size_x=(field->size_y)*4;
 	field->robots=calloc(field->robot_num,sizeof(Robot));
+	for(int i=0;i<field->robot_num;i++) field->robots[i].active=true;
 }
 
 int skip_block(int x,int y){
@@ -87,3 +89,4 @@ void create_field(){
 	field->matrix[x][y].state=PLAYER;
 	set_robots();
 }
+

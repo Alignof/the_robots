@@ -18,6 +18,9 @@ void display_block(Block *block,int x,int y){
 		case ROBOT:
 			printf("+");
 			break;
+		case GARBAGE:
+			printf("\e[34m*\e[39m");
+			break;
 	}
 	printf("\e[49m");
 }
@@ -51,4 +54,11 @@ void display_field(){
 	printf("  \e[49m\n");
 }
 
+void display_gameover(){
+	printf("game over...\n");
+}
+
+void display_gameclear(){
+	printf("game clear!\n");
+}
 
