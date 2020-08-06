@@ -27,7 +27,10 @@ typedef struct{
 	Block **matrix;
 }Field;
 
+// global variable
 Field *field;
+bool is_gameover;
+bool is_gameclear;
 
 // setup.c
 void create_field();
@@ -51,6 +54,8 @@ void robot_collision(int x,int y);
 void move_player(int next_x,int next_y);
 void move_robots(int player_x,int player_y);
 void next_stage();
+void game_over();
+void game_clear();
 
 // getChar.c
 char getChar();
