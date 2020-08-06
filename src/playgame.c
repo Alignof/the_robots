@@ -66,7 +66,7 @@ void next_stage(){
 	int rx,ry;
 
 	field->level++;
-	if(field->level<10) field->robot_num++;
+	if(field->level<10) field->robot_num+=5;
 	field->robots_remain=field->robot_num;
 
 	for(int i=0;i<field->robot_num;i++){
@@ -90,7 +90,6 @@ void random_set(int *x,int *y){
 	}while(field->matrix[*x][*y].state==ROBOT || field->matrix[*x][*y].state==GARBAGE);
 	field->matrix[*x][*y].state=PLAYER;
 
-	move_robots(field->player_x,field->player_y);
 }
 
 void get_command(){
@@ -105,10 +104,12 @@ void get_command(){
 		}while(!(0<=command && command<=9) || command==5);
 
 
-		if(command==0)
+		if(command==0){
 			random_set(&(field->player_x),&(field->player_y));
-		else
+			move_robots(field->player_x,field->player_y);
+		}else{
 			move_player((field->player_x)+((command-1)%3-1),(field->player_y)-((command-1)/3-1));
+		}
 	}
 
 	if(is_gameclear) game_clear();
