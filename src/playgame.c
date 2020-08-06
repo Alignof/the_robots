@@ -51,12 +51,13 @@ void move_player(int next_x,int next_y){
 		field->matrix[field->player_x][field->player_y].state=NONE;
 		field->player_x=next_x;
 		field->player_y=next_y;
-		if(field->matrix[next_x][next_y].state == ROBOT)
-			is_gameover=true;
-		else
-			field->matrix[next_x][next_y].state=PLAYER;
 
-		move_robots(field->player_x,field->player_y);
+		if(field->matrix[next_x][next_y].state == ROBOT){
+			is_gameover=true;
+		}else{
+			field->matrix[next_x][next_y].state=PLAYER;
+			move_robots(field->player_x,field->player_y);
+		}
 	}
 }
 
@@ -83,9 +84,13 @@ void random_set(int *x,int *y){
 	int rx,ry;
 
 	field->matrix[*x][*y].state=NONE;
-	*x=rand()%(field->size_x);
-	*y=rand()%(field->size_y);
+	do{
+		*x=rand()%(field->size_x);
+		*y=rand()%(field->size_y);
+	}while(field->matrix[*x][*y].state==ROBOT || field->matrix[*x][*y].state==GARBAGE);
 	field->matrix[*x][*y].state=PLAYER;
+
+	move_robots(field->player_x,field->player_y);
 }
 
 void get_command(){
