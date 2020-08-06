@@ -3,23 +3,23 @@
 void get_field_size(){
 	char level;
 	do{
-		printf("input field size[S:12*48 M:20*80 L:30*120]>>");
+		printf("input field size[S:20*80 M:30*120 L:40*160]>>");
 		scanf("%c",&level);
 
 		switch(level){
 			case 's':
 			case 'S':
-				field->size_y=12;
+				field->size_y=20;
 				field->robot_num=5;
 				break;
 			case 'm':
 			case 'M':
-				field->size_y=20;
+				field->size_y=30;
 				field->robot_num=8;
 				break;
 			case 'l':
 			case 'L':
-				field->size_y=30;
+				field->size_y=40;
 				field->robot_num=12;
 				break;
 			default:
@@ -28,7 +28,7 @@ void get_field_size(){
 	}while(field->size_y==0);
 
 	field->size_x=(field->size_y)*4;
-	field->robots=calloc(field->robot_num+10,sizeof(Robot));
+	field->robots=calloc(field->robot_num+50,sizeof(Robot));
 	field->robots_remain=field->robot_num;
 	field->level=1;
 	for(int i=0;i<field->robot_num;i++) field->robots[i].active=true;

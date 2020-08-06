@@ -37,8 +37,8 @@ void move_robots(int player_x,int player_y){
 				(*remain)--;
 			}else if(field->matrix[*x][*y].state==ROBOT){
 				robot_collision(*x,*y);
-			}else{
-				display_gameover();
+			}else if(field->matrix[*x][*y].state==PLAYER){
+				is_gameover=true;
 			}
 		}
 	}
@@ -51,9 +51,13 @@ void move_player(int next_x,int next_y){
 		field->matrix[field->player_x][field->player_y].state=NONE;
 		field->player_x=next_x;
 		field->player_y=next_y;
-		field->matrix[next_x][next_y].state=PLAYER;
 
-		move_robots(field->player_x,field->player_y);
+		if(field->matrix[next_x][next_y].state == ROBOT){
+			is_gameover=true;
+		}else{
+			field->matrix[next_x][next_y].state=PLAYER;
+			move_robots(field->player_x,field->player_y);
+		}
 	}
 }
 
@@ -62,7 +66,7 @@ void next_stage(){
 	int rx,ry;
 
 	field->level++;
-	if(field->level<10) field->robot_num++;
+	if(field->level<10) field->robot_num+=5;
 	field->robots_remain=field->robot_num;
 
 	for(int i=0;i<field->robot_num;i++){
@@ -80,15 +84,18 @@ void random_set(int *x,int *y){
 	int rx,ry;
 
 	field->matrix[*x][*y].state=NONE;
-	*x=rand()%(field->size_x);
-	*y=rand()%(field->size_y);
+	do{
+		*x=rand()%(field->size_x);
+		*y=rand()%(field->size_y);
+	}while(field->matrix[*x][*y].state==ROBOT || field->matrix[*x][*y].state==GARBAGE);
 	field->matrix[*x][*y].state=PLAYER;
+
 }
 
 void get_command(){
 	char command;
 
-	while(1){
+	while(!(is_gameover || is_gameclear)){
 		display_field();
 		display_prompt();
 
@@ -97,11 +104,24 @@ void get_command(){
 		}while(!(0<=command && command<=9) || command==5);
 
 
-		if(command==0)
+		if(command==0){
 			random_set(&(field->player_x),&(field->player_y));
-		else
+			move_robots(field->player_x,field->player_y);
+		}else{
 			move_player((field->player_x)+((command-1)%3-1),(field->player_y)-((command-1)/3-1));
+		}
 	}
+
+	if(is_gameclear) game_clear();
+	if(is_gameover) game_over();
+}
+
+void game_over(){
+	printf("\ngameover.\n");
+}
+
+void game_clear(){
+	printf("\ngameclear.\n");
 }
 
 void playgame(){
