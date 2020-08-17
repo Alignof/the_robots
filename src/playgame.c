@@ -104,7 +104,7 @@ void get_command(){
 
 		do{
 			command=getChar();
-		}while(!(0<=command && command<=9) || command==5);
+		}while(!(0<=command && command<=9));
 
 
 		if(command==0){
