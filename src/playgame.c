@@ -10,6 +10,7 @@ void robot_collision(int x,int y){
 		if(field->robots[i].x==x && field->robots[i].y==y){
 			field->robots[i].active=false;
 			field->robots_remain--;
+			field->score++;
 		}
 	}
 }
@@ -35,6 +36,7 @@ void move_robots(int player_x,int player_y){
 			}else if(field->matrix[*x][*y].state==GARBAGE){
 				field->robots[i].active=false;
 				(*remain)--;
+				field->score++;
 			}else if(field->matrix[*x][*y].state==ROBOT){
 				robot_collision(*x,*y);
 			}else if(field->matrix[*x][*y].state==PLAYER){
@@ -65,6 +67,7 @@ void move_player(int next_x,int next_y){
 void next_stage(){
 	int rx,ry;
 
+	field->score+=(field->level)*10;
 	field->level++;
 	if(field->level<10) field->robot_num+=5;
 	field->robots_remain=field->robot_num;
@@ -101,7 +104,7 @@ void get_command(){
 
 		do{
 			command=getChar();
-		}while(!(0<=command && command<=9) || command==5);
+		}while(!(0<=command && command<=9));
 
 
 		if(command==0){

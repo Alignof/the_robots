@@ -23,6 +23,7 @@ typedef struct{
 	int robot_num;
 	int robots_remain;
 	int level;
+	int score;
 	Robot *robots;
 	Block **matrix;
 }Field;

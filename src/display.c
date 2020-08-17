@@ -1,12 +1,10 @@
 #include "the_robots.h"
 
 void display_prompt(){
-	printf("[level:%d]>>",field->level);
+	printf("[level:%d score:%d]>>",field->level,field->score);
 }
 
 void display_block(Block *block,int x,int y){
-	// !debug: all block opend
-	
 	printf("\e[42m");
 	switch(block->state){
 		case NONE:
