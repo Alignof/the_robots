@@ -31,6 +31,7 @@ void get_field_size(){
 	field->robots=calloc(field->robot_num+50,sizeof(Robot));
 	field->robots_remain=field->robot_num;
 	field->level=1;
+	field->score=0;
 	for(int i=0;i<field->robot_num;i++) field->robots[i].active=true;
 }
 
