@@ -54,6 +54,7 @@ bool in_field(int x,int y);
 void robot_collision(int x,int y);
 void move_player(int next_x,int next_y);
 void move_robots(int player_x,int player_y);
+void no_more_movement();
 void next_stage();
 void game_over();
 void game_clear();
