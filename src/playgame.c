@@ -73,7 +73,7 @@ void next_stage(){
 
 	field->score+=(field->level)*10;
 	field->level++;
-	if(field->level<10) field->robot_num+=5;
+	if(field->level<7) field->robot_num+=5;
 	field->robots_remain=field->robot_num;
 
 	for(int i=0;i<field->robot_num;i++){
