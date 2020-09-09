@@ -1,5 +1,7 @@
 #include "the_robots.h"
 
+Field *field;
+
 int main(int argc,char *argv[]){
 	srand((unsigned)time(NULL));
 	field=calloc(1,sizeof(Field));

@@ -1,5 +1,9 @@
 #include "the_robots.h"
 
+Field *field;
+bool is_gameover;
+bool is_gameclear;
+
 bool in_field(int x,int y){
 	return (0 <= y && y < field->size_y) && (0 <= x && x < field->size_x);
 }

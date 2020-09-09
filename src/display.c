@@ -1,5 +1,7 @@
 #include "the_robots.h"
 
+Field *field;
+
 void display_prompt(){
 	printf("[level:%d score:%d]>>",field->level,field->score);
 }

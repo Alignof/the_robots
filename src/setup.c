@@ -1,5 +1,7 @@
 #include "the_robots.h"
 
+Field *field;
+
 void get_field_size(){
 	char level;
 	do{

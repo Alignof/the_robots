@@ -29,9 +29,9 @@ typedef struct{
 }Field;
 
 // global variable
-Field *field;
-bool is_gameover;
-bool is_gameclear;
+extern Field *field;
+extern bool is_gameover;
+extern bool is_gameclear;
 
 // setup.c
 void create_field();
