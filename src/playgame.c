@@ -161,17 +161,10 @@ void get_command(){
 		}
 	}
 
-	if(is_gameclear) game_clear();
-	if(is_gameover) game_over();
+	if(is_gameclear) display_gameclear();
+	if(is_gameover) display_gameover();
 }
 
-void game_over(){
-	printf("\ngameover.\n");
-}
-
-void game_clear(){
-	printf("\ngameclear.\n");
-}
 
 void playgame(){
 	get_command();
