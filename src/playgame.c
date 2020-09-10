@@ -1,5 +1,9 @@
 #include "the_robots.h"
 
+Field *field;
+bool is_gameover;
+bool is_gameclear;
+
 bool in_field(int x,int y){
 	return (0 <= y && y < field->size_y) && (0 <= x && x < field->size_x);
 }
@@ -69,7 +73,7 @@ void next_stage(){
 
 	field->score+=(field->level)*10;
 	field->level++;
-	if(field->level<10) field->robot_num+=5;
+	if(field->level<8) field->robot_num+=5;
 	field->robots_remain=field->robot_num;
 
 	for(int i=0;i<field->robot_num;i++){
@@ -157,17 +161,10 @@ void get_command(){
 		}
 	}
 
-	if(is_gameclear) game_clear();
-	if(is_gameover) game_over();
+	if(is_gameclear) display_gameclear();
+	if(is_gameover) display_gameover();
 }
 
-void game_over(){
-	printf("\ngameover.\n");
-}
-
-void game_clear(){
-	printf("\ngameclear.\n");
-}
 
 void playgame(){
 	get_command();

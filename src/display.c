@@ -1,10 +1,12 @@
 #include "the_robots.h"
 
+Field *field;
+
 void display_prompt(){
 	printf("[level:%d score:%d]>>",field->level,field->score);
 }
 
-void display_block(Block *block,int x,int y){
+void display_block(Block *block){
 	printf("\e[42m");
 	switch(block->state){
 		case NONE:
@@ -41,7 +43,7 @@ void display_field(){
 	for(y=0;y<field->size_y;y++){
 		printf("\e[40m  \e[49m");
 		for(x=0;x<field->size_x;x++){
-			display_block(&(field->matrix[x][y]),x,y);
+			display_block(&(field->matrix[x][y]));
 		}
 		printf("\e[40m  \e[49m\n");
 	}

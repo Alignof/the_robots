@@ -1,5 +1,7 @@
 #include "the_robots.h"
 
+Field *field;
+
 void get_field_size(){
 	char level;
 	do{
@@ -15,12 +17,12 @@ void get_field_size(){
 			case 'm':
 			case 'M':
 				field->size_y=30;
-				field->robot_num=8;
+				field->robot_num=10;
 				break;
 			case 'l':
 			case 'L':
 				field->size_y=40;
-				field->robot_num=12;
+				field->robot_num=10;
 				break;
 			default:
 				field->size_y=0;

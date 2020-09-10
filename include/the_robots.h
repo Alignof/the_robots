@@ -29,9 +29,9 @@ typedef struct{
 }Field;
 
 // global variable
-Field *field;
-bool is_gameover;
-bool is_gameclear;
+extern Field *field;
+extern bool is_gameover;
+extern bool is_gameclear;
 
 // setup.c
 void create_field();
@@ -42,7 +42,7 @@ int skip_block(int x,int y);
 // display.c
 void display_field();
 void display_prompt();
-void display_block(Block *block,int x,int y);
+void display_block(Block *block);
 void display_gameover();
 void display_gameclear();
 
@@ -56,8 +56,6 @@ void move_player(int next_x,int next_y);
 void move_robots(int player_x,int player_y);
 void no_more_movement();
 void next_stage();
-void game_over();
-void game_clear();
 
 // getChar.c
 char getChar();
